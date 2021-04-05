@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes Footwear Design</title>
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+</head>
+<body>
+
+    
+    
+    <a href="#" class="hamburger">
+        <i class="fas fa-bars"></i>
+    </a>
+
+    <a href="#" class="phone"><i class="fas fa-phone"></i></a>
+
+     <div class="logo">
+        <i class="fas fa-shoe-prints"></i>
+        <h2>Shoe are Us</h2>
+        <p>Find the right fit for you</p>
+    </div>
+
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="slide" data-bg="cb021c">
+                <img src="images/shoe.jpg" alt="shoe-1">
+                <h1>Performance</h1>
+                 <a href="#">Learn More</a>
+            </div>
+            <div class="slide" data-bg="F9A300">
+                <img src="images/shoe4.jpg" alt="shoe-2">
+                <h1>Design</h1>
+                 <a href="#">Learn More</a>
+            </div>
+            <div class="slide" data-bg="0069CD">
+                <img src="images/shoe2.jpg" alt="shoe-3">
+                <h1>Comodity</h1>
+                 <a href="#">Learn More</a>
+            </div>
+            <div class="slide" data-bg="3F4346">
+                <img src="images/shoe3.jpg" alt="shoe-4">
+                <h1>Lightness</h1>
+                 <a href="#">Learn More</a>
+            </div>
+        </div>
+
+        <button id="left" class="left-arrow arrow">
+            <i class="fas fa-chevron-left">
+            </i>
+        </button>
+        <button id="right" class="right-arrow arrow" >
+            <i class="fas fa-chevron-right">
+            </i>
+        </button>
+
+        <div class="progress"></div>
+    </div>
+
+    
+    <script >
+        const slides = document.querySelectorAll(".slide");
+const carousel = document.getElementById("carousel");
+const left = document.getElementById("left");
+const right = document.getElementById("right");
+
+const SLIDES_COUNT = slides.length;
+
+let current_slide = 0;
+
+left.addEventListener("click", () => {
+    current_slide++;
+    if (current_slide > SLIDES_COUNT - 1) {
+        current_slide = 0;
+    }
+
+    updateCarouse();
+});
+
+right.addEventListener("click", () => {
+    current_slide--;
+    if (current_slide < 0) {
+        current_slide = SLIDES_COUNT - 1;
+    }
+
+    updateCarouse();
+});
+
+function updateCarouse() {
+    carousel.style.transform = `translateX(${
+        -current_slide * slides [0].offsetWidth
+    }px)`;
+
+    console.log(slides[current_slide].getAttribute("data-bg"));
+
+    document.body.style.background = `#${slides[current_slide].getAttribute("data-bg")}`;
+}
+    </script>
+</body>
+</html>
